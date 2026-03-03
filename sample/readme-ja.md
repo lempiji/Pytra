@@ -54,6 +54,7 @@
 - [`kotlin/`](kotlin): Kotlin 変換結果
 - [`ruby/`](ruby): Ruby 変換結果
 - [`lua/`](lua): Lua 変換結果（段階対応）
+- [`d/`](d): D 変換結果
 - [`images/`](images): README 表示用の静的画像（Git 管理）
 - `obj/`: 各言語のビルド生成物（Git 管理外）
 - `out/`: 実行時の出力画像（PNG/GIF、Git 管理外）

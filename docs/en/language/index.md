@@ -8,3 +8,5 @@ This is the entry point for per-target-language specifications.
 
 - C++:
   - Support status (with test evidence): [py2cpp Support Matrix](./cpp/spec-support.md)
+- D:
+  - Transpiler: `py2d.py` — generates D source from EAST3 IR.

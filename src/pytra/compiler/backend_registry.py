@@ -24,6 +24,7 @@ from backends.lua.lower import lower_east3_to_lua_ir
 from backends.lua.optimizer import optimize_lua_ir
 from backends.lua.emitter import transpile_to_lua_native
 from backends.nim.emitter import transpile_to_nim_native
+from backends.d.emitter import transpile_to_d_native
 from backends.php.lower import lower_east3_to_php_ir
 from backends.php.optimizer import optimize_php_ir
 from backends.php.emitter import transpile_to_php_native
@@ -159,6 +160,10 @@ def _emit_nim(ir: dict[str, Any], _output_path: Path, _emitter_options: dict[str
     return transpile_to_nim_native(ir)
 
 
+def _emit_d(ir: dict[str, Any], _output_path: Path, _emitter_options: dict[str, Any] | None = None) -> str:
+    return transpile_to_d_native(ir)
+
+
 def _runtime_none(_output_path: Path) -> None:
     return
 
@@ -201,6 +206,10 @@ def _runtime_scala(output_path: Path) -> None:
 
 def _runtime_nim(output_path: Path) -> None:
     _copy_runtime_file("runtime/nim/pytra/py_runtime.nim", output_path, "py_runtime.nim")
+
+
+def _runtime_d(output_path: Path) -> None:
+    _copy_runtime_file("runtime/d/pytra/py_runtime.d", output_path, "py_runtime.d")
 
 
 BackendSpec = dict[str, Any]
@@ -338,6 +347,14 @@ _BACKEND_SPECS: dict[str, BackendSpec] = {
         "optimizer": _identity_ir,
         "emit": _emit_nim,
         "runtime_hook": _runtime_nim,
+    },
+    "d": {
+        "target_lang": "d",
+        "extension": ".d",
+        "lower": _identity_ir,
+        "optimizer": _identity_ir,
+        "emit": _emit_d,
+        "runtime_hook": _runtime_d,
     },
 }
 

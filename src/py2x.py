@@ -37,7 +37,7 @@ def _fatal(msg: str) -> None:
 
 def _print_help() -> None:
     print(
-        "usage: py2x.py INPUT.py --target {cpp,rs,cs,js,ts,go,java,kotlin,swift,ruby,lua,scala,php,nim} "
+        "usage: py2x.py INPUT.py --target {cpp,rs,cs,js,ts,go,java,kotlin,swift,ruby,lua,scala,php,nim,d} "
         "[-o OUTPUT] [--parser-backend self_hosted] [--east-stage 3] "
         "[--object-dispatch-mode {native,type_id}] [--east3-opt-level {0,1,2}] "
         "[--east3-opt-pass SPEC] [--dump-east3-before-opt PATH] "

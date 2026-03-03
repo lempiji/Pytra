@@ -182,6 +182,10 @@ class DNativeEmitter:
             self._emit_raise(stmt)
         elif kind == "Pass":
             self._emit_line("// pass")
+        elif kind == "Break":
+            self._emit_line("break;")
+        elif kind == "Continue":
+            self._emit_line("continue;")
         elif kind == "Import":
             self._emit_import(stmt)
         elif kind == "ImportFrom":
@@ -520,6 +524,8 @@ class DNativeEmitter:
             value = self._render_expr(value_node)
             attr = _safe_ident(expr.get("attr"))
             if value in ("png", "v_png") and attr == "write_rgb_png": return "writeRgbPng"
+            if value == "math" and attr == "pi": return "PI"
+            if value == "math" and attr == "e": return "E"
             return f"{value}.{attr}"
         return f"/* unknown expr {kind} */"
 
@@ -560,6 +566,15 @@ class DNativeEmitter:
         func_expr = self._render_expr(func)
         if func_expr == "math.sqrt": return f"sqrt(cast(double)({args[0]}))"
         if func_expr == "math.fabs": return f"abs(cast(double)({args[0]}))"
+        if func_expr == "math.sin": return f"sin(cast(double)({args[0]}))"
+        if func_expr == "math.cos": return f"cos(cast(double)({args[0]}))"
+        if func_expr == "math.tan": return f"tan(cast(double)({args[0]}))"
+        if func_expr == "math.floor": return f"to!long(floor(cast(double)({args[0]})))"
+        if func_expr == "math.ceil": return f"to!long(ceil(cast(double)({args[0]})))"
+        if func_expr == "math.exp": return f"exp(cast(double)({args[0]}))"
+        if func_expr == "math.log": return f"log(cast(double)({args[0]}))"
+        if func_expr == "math.atan2" and len(args) >= 2: return f"atan2(cast(double)({args[0]}), cast(double)({args[1]}))"
+        if func_expr == "math.pow" and len(args) >= 2: return f"pow(cast(double)({args[0]}), cast(double)({args[1]}))"
 
         return f"{func_expr}({', '.join(args)})"
 

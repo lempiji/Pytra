@@ -20,7 +20,7 @@ auto run_15_wave_interference_loop() {
             foreach (x; 0 .. w) {
                 auto dx = (x - 160);
                 auto dy = (y - 120);
-                auto v = (((math.sin(((x + (t * 1.5)) * 0.045)) + math.sin(((y - (t * 1.2)) * 0.04))) + math.sin((((x + y) * 0.02) + phase))) + math.sin(((sqrt(cast(double)(((dx * dx) + (dy * dy)))) * 0.08) - (phase * 1.3))));
+                auto v = (((sin(cast(double)(((x + (t * 1.5)) * 0.045))) + sin(cast(double)(((y - (t * 1.2)) * 0.04)))) + sin(cast(double)((((x + y) * 0.02) + phase)))) + sin(cast(double)(((sqrt(cast(double)(((dx * dx) + (dy * dy)))) * 0.08) - (phase * 1.3)))));
                 auto c = to!long(((v + 4.0) * (cast(double)(255.0) / cast(double)(8.0))));
                 if ((c < 0)) {
                     c = 0;

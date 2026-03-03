@@ -25,7 +25,7 @@ auto scene(double x, double y, double light_x, double light_y) {
     auto y2 = (y - 0.15);
     auto r1 = sqrt(cast(double)(((x1 * x1) + (y1 * y1))));
     auto r2 = sqrt(cast(double)(((x2 * x2) + (y2 * y2))));
-    auto blob = (math.exp((((-7.0) * r1) * r1)) + math.exp((((-8.0) * r2) * r2)));
+    auto blob = (exp(cast(double)((((-7.0) * r1) * r1))) + exp(cast(double)((((-8.0) * r2) * r2))));
     auto lx = (x - light_x);
     auto ly = (y - light_y);
     auto l = sqrt(cast(double)(((lx * lx) + (ly * ly))));
@@ -46,9 +46,9 @@ auto run_14_raymarching_light_cycle() {
     double __hoisted_cast_3 = to!double((w - 1));
     foreach (t; 0 .. frames_n) {
         auto frame = cast(ubyte[])[];
-        auto a = (((cast(double)(t) / cast(double)(__hoisted_cast_1)) * math.pi) * 2.0);
-        auto light_x = (0.75 * math.cos(a));
-        auto light_y = (0.55 * math.sin((a * 1.2)));
+        auto a = (((cast(double)(t) / cast(double)(__hoisted_cast_1)) * PI) * 2.0);
+        auto light_x = (0.75 * cos(cast(double)(a)));
+        auto light_y = (0.55 * sin(cast(double)((a * 1.2))));
         foreach (y; 0 .. h) {
             auto row_base = (y * w);
             auto py = (((cast(double)(y) / cast(double)(__hoisted_cast_2)) * 2.0) - 1.0);

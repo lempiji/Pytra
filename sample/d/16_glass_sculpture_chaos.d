@@ -57,7 +57,7 @@ auto sky_color(double dx, double dy, double dz, double tphase) {
     auto r = (0.06 + (0.2 * t));
     auto g = (0.1 + (0.25 * t));
     auto b = (0.16 + (0.45 * t));
-    auto band = (0.5 + (0.5 * math.sin((((8.0 * dx) + (6.0 * dz)) + tphase))));
+    auto band = (0.5 + (0.5 * sin(cast(double)((((8.0 * dx) + (6.0 * dz)) + tphase)))));
     r += /* unknown expr Unbox */;
     g += /* unknown expr Unbox */;
     b += /* unknown expr Unbox */;
@@ -110,30 +110,30 @@ auto quantize_332(double r, double g, double b) {
 
 auto render_frame(long width, long height, long frame_id, long frames_n) {
     auto t = (cast(double)(frame_id) / cast(double)(frames_n));
-    auto tphase = ((2.0 * math.pi) * t);
+    auto tphase = ((2.0 * PI) * t);
     auto cam_r = 3.0;
-    auto cam_x = (cam_r * math.cos((tphase * 0.9)));
-    auto cam_y = (1.1 + (0.25 * math.sin((tphase * 0.6))));
-    auto cam_z = (cam_r * math.sin((tphase * 0.9)));
+    auto cam_x = (cam_r * cos(cast(double)((tphase * 0.9))));
+    auto cam_y = (1.1 + (0.25 * sin(cast(double)((tphase * 0.6)))));
+    auto cam_z = (cam_r * sin(cast(double)((tphase * 0.9))));
     auto look_x = 0.0;
     auto look_y = 0.35;
     auto look_z = 0.0;
     tuple(fwd_x, fwd_y, fwd_z) = normalize((look_x - cam_x), (look_y - cam_y), (look_z - cam_z));
     tuple(right_x, right_y, right_z) = normalize(fwd_z, 0.0, (-fwd_x));
     tuple(up_x, up_y, up_z) = normalize(((right_y * fwd_z) - (right_z * fwd_y)), ((right_z * fwd_x) - (right_x * fwd_z)), ((right_x * fwd_y) - (right_y * fwd_x)));
-    auto s0x = (0.9 * math.cos((1.3 * tphase)));
-    auto s0y = (0.15 + (0.35 * math.sin((1.7 * tphase))));
-    auto s0z = (0.9 * math.sin((1.3 * tphase)));
-    auto s1x = (1.2 * math.cos(((1.3 * tphase) + 2.094)));
-    auto s1y = (0.1 + (0.4 * math.sin(((1.1 * tphase) + 0.8))));
-    auto s1z = (1.2 * math.sin(((1.3 * tphase) + 2.094)));
-    auto s2x = (1.0 * math.cos(((1.3 * tphase) + 4.188)));
-    auto s2y = (0.2 + (0.3 * math.sin(((1.5 * tphase) + 1.9))));
-    auto s2z = (1.0 * math.sin(((1.3 * tphase) + 4.188)));
+    auto s0x = (0.9 * cos(cast(double)((1.3 * tphase))));
+    auto s0y = (0.15 + (0.35 * sin(cast(double)((1.7 * tphase)))));
+    auto s0z = (0.9 * sin(cast(double)((1.3 * tphase))));
+    auto s1x = (1.2 * cos(cast(double)(((1.3 * tphase) + 2.094))));
+    auto s1y = (0.1 + (0.4 * sin(cast(double)(((1.1 * tphase) + 0.8)))));
+    auto s1z = (1.2 * sin(cast(double)(((1.3 * tphase) + 2.094))));
+    auto s2x = (1.0 * cos(cast(double)(((1.3 * tphase) + 4.188))));
+    auto s2y = (0.2 + (0.3 * sin(cast(double)(((1.5 * tphase) + 1.9)))));
+    auto s2z = (1.0 * sin(cast(double)(((1.3 * tphase) + 4.188))));
     auto lr = 0.35;
-    auto lx = (2.4 * math.cos((tphase * 1.8)));
-    auto ly = (1.8 + (0.8 * math.sin((tphase * 1.2))));
-    auto lz = (2.4 * math.sin((tphase * 1.8)));
+    auto lx = (2.4 * cos(cast(double)((tphase * 1.8))));
+    auto ly = (1.8 + (0.8 * sin(cast(double)((tphase * 1.2)))));
+    auto lz = (2.4 * sin(cast(double)((tphase * 1.8))));
     auto frame = cast(ubyte[])[];
     auto aspect = (cast(double)(width) / cast(double)(height));
     auto fov = 1.25;
@@ -181,8 +181,8 @@ auto render_frame(long width, long height, long frame_id, long frames_n) {
             if ((hit_kind == 1)) {
                 auto hx = (cam_x + (best_t * dx));
                 auto hz = (cam_z + (best_t * dz));
-                auto cx = to!long(math.floor((hx * 2.0)));
-                auto cz = to!long(math.floor((hz * 2.0)));
+                auto cx = to!long(to!long(floor(cast(double)((hx * 2.0)))));
+                auto cz = to!long(to!long(floor(cast(double)((hz * 2.0)))));
                 auto checker = /* unknown expr IfExp */;
                 auto base_r = /* unknown expr IfExp */;
                 auto base_g = /* unknown expr IfExp */;

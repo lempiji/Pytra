@@ -71,9 +71,9 @@ auto run_06_julia_parameter_sweep() {
     double __hoisted_cast_3 = to!double(frames_n);
     foreach (i; 0 .. frames_n) {
         auto t = (cast(double)(pyMod((i + start_offset), frames_n)) / cast(double)(__hoisted_cast_3));
-        auto angle = ((2.0 * math.pi) * t);
-        auto cr = (center_cr + (radius_cr * math.cos(angle)));
-        auto ci = (center_ci + (radius_ci * math.sin(angle)));
+        auto angle = ((2.0 * PI) * t);
+        auto cr = (center_cr + (radius_cr * cos(cast(double)(angle))));
+        auto ci = (center_ci + (radius_ci * sin(cast(double)(angle))));
         auto phase = pyMod((phase_offset + (i * 5)), 255);
         frames ~= render_frame(width, height, cr, ci, max_iter, phase);
     }

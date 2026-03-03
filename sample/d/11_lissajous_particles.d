@@ -31,8 +31,8 @@ auto run_11_lissajous_particles() {
         double __hoisted_cast_1 = to!double(t);
         foreach (p; 0 .. particles) {
             auto phase = (p * 0.261799);
-            auto x = to!long(((w * 0.5) + ((w * 0.38) * math.sin(((0.11 * __hoisted_cast_1) + (phase * 2.0))))));
-            auto y = to!long(((h * 0.5) + ((h * 0.38) * math.sin(((0.17 * __hoisted_cast_1) + (phase * 3.0))))));
+            auto x = to!long(((w * 0.5) + ((w * 0.38) * sin(cast(double)(((0.11 * __hoisted_cast_1) + (phase * 2.0)))))));
+            auto y = to!long(((h * 0.5) + ((h * 0.38) * sin(cast(double)(((0.17 * __hoisted_cast_1) + (phase * 3.0)))))));
             auto color = (30 + pyMod((p * 9), 220));
             foreach (dy; (-2) .. 3) {
                 foreach (dx; (-2) .. 3) {

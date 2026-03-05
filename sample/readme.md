@@ -71,6 +71,7 @@ Notes:
 - Swift: Executable built with `swiftc`
 - Kotlin: `jar` built with `kotlinc -include-runtime`
 - Ruby: `ruby --yjit sample/ruby/<file>.rb` (for benchmarking; regular runs can use `ruby sample/ruby/<file>.rb`)
+- D: `dmd -O -release` or `ldc2 -O2 -release` to build, then execute the resulting binary
 
 Note:
 - `py2go.py` / `py2java.py` / `py2swift.py` / `py2kotlin.py` are currently in preview emitter status.

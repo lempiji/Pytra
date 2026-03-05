@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parents[2]
 PY2CPP = ROOT / "src" / "py2cpp.py"
 PY2RS = ROOT / "src" / "py2rs.py"
 PY2SCALA = ROOT / "src" / "py2scala.py"
+PY2D = ROOT / "src" / "py2d.py"
 GEN_MAKEFILE = ROOT / "tools" / "gen_makefile_from_manifest.py"
 PYTHON = sys.executable or "python3"
 
@@ -205,11 +206,32 @@ def _transpile_scala(input_path: Path, args: argparse.Namespace, passthrough: li
     return _run(cmd, cwd=ROOT)
 
 
+def _resolve_d_output_path(input_path: Path, args: argparse.Namespace) -> Path:
+    if args.output != "":
+        return Path(args.output)
+    out_dir = Path(args.output_dir) if args.output_dir else Path(DEFAULT_OUTPUT_DIR)
+    stem = input_path.stem
+    if stem == "":
+        stem = "output"
+    return out_dir / f"{stem}.d"
+
+
+def _transpile_d(input_path: Path, args: argparse.Namespace, passthrough: list[str]) -> int:
+    output_path = _resolve_d_output_path(input_path, args)
+    if output_path.exists() and output_path.is_dir():
+        print(f"error: output path is a directory: {output_path}", file=sys.stderr)
+        return 1
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    cmd = [PYTHON, str(PY2D), str(input_path), "--output", str(output_path)]
+    cmd.extend(passthrough)
+    return _run(cmd, cwd=ROOT)
+
+
 def _parse(argv: list[str]) -> tuple[argparse.Namespace, list[str]]:
     argv = _normalize_args(argv)
     ap = argparse.ArgumentParser(description="pytra unified CLI (v1)")
     ap.add_argument("input", help="Input Python source path")
-    ap.add_argument("--target", default="cpp", choices=["cpp", "rs", "scala"], help="target language")
+    ap.add_argument("--target", default="cpp", choices=["cpp", "rs", "scala", "d"], help="target language")
     ap.add_argument("--build", action="store_true", help="transpile then build in one step")
     ap.add_argument("--output-dir", default=DEFAULT_OUTPUT_DIR, help="output dir for multi-file")
     ap.add_argument("--output", default="", help="output file for non-build single-file mode")
@@ -268,6 +290,8 @@ def main(argv: list[str]) -> int:
         return _transpile_rs(input_path, args, passthrough_args)
     if args.target == "scala":
         return _transpile_scala(input_path, args, passthrough_args)
+    if args.target == "d":
+        return _transpile_d(input_path, args, passthrough_args)
     print(f"error: unsupported target: {args.target}", file=sys.stderr)
     return 1
 

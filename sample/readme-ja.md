@@ -73,6 +73,7 @@
 - Swift: `swiftc` でビルドした実行ファイル
 - Kotlin: `kotlinc -include-runtime` でビルドした `jar`
 - Ruby: `ruby --yjit sample/ruby/<file>.rb`（速度計測時。通常実行は `ruby sample/ruby/<file>.rb`）
+- D: `dmd -O -release` または `ldc2 -O2 -release` でビルド後に実行
 
 注:
 - `py2go.py` / `py2java.py` / `py2swift.py` / `py2kotlin.py` は現在 preview emitter 段階です。

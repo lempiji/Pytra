@@ -29,6 +29,7 @@
     <img alt="Scala3" src="https://img.shields.io/badge/-Scala3-10B981?style=flat-square&logo=scala&logoColor=white">
     <img alt="PHP" src="https://img.shields.io/badge/-PHP%C2%A0%C2%A0%C2%A0-777BB4?style=flat-square&logo=php&logoColor=white">
     <img alt="Nim" src="https://img.shields.io/badge/-Nim%C2%A0%C2%A0%C2%A0-37775B?style=flat-square&logo=nim&logoColor=white">
+    <img alt="D" src="https://img.shields.io/badge/-D%C2%A0%C2%A0%C2%A0%C2%A0%C2%A0-B03931?style=flat-square&logo=d&logoColor=white">
 </div>
 </div>
 
@@ -52,7 +53,7 @@
 Pytraの特徴
 
 - Pythonから各言語への変換器
-  - C++, C#, Rust, JavaScript, TypeScript, Go, Java, Swift, Kotlin, Ruby, Lua, Scala3, PHP に変換可能。
+  - C++, C#, Rust, JavaScript, TypeScript, Go, Java, Swift, Kotlin, Ruby, Lua, Scala3, PHP, D に変換可能。
   - 元のソースコードに極めて近い形のまま変換
 
 - C++で書くのと同等のコードをPythonで書けることが目標
@@ -109,7 +110,7 @@ Pythonで書かれた[サンプルコード](../../sample/readme-ja.md)の実行
 </details>
 
 <details>
-<summary>変換後コード（C++ | Rust | C# | JavaScript | TypeScript | Go | Java | Swift | Kotlin | Ruby | Lua | Scala3 | PHP）</summary>
+<summary>変換後コード（C++ | Rust | C# | JavaScript | TypeScript | Go | Java | Swift | Kotlin | Ruby | Lua | Scala3 | PHP | D）</summary>
 
 - C++: [View full code](../../sample/cpp/06_julia_parameter_sweep.cpp)
 - Rust: [View full code](../../sample/rs/06_julia_parameter_sweep.rs)
@@ -124,6 +125,7 @@ Pythonで書かれた[サンプルコード](../../sample/readme-ja.md)の実行
 - Lua: [View full code](../../sample/lua/06_julia_parameter_sweep.lua)
 - Scala3: [View full code](../../sample/scala/06_julia_parameter_sweep.scala)
 - PHP: [View full code](../../sample/php/06_julia_parameter_sweep.php)
+- D: [View full code](../../sample/d/06_julia_parameter_sweep.d)
 
 </details>
 
@@ -139,7 +141,7 @@ Pythonで書かれた[サンプルコード](../../sample/readme-ja.md)の実行
 </details>
 
 <details>
-<summary>変換後コード（C++ | Rust | C# | JavaScript | TypeScript | Go | Java | Swift | Kotlin | Ruby | Lua | Scala3 | PHP）</summary>
+<summary>変換後コード（C++ | Rust | C# | JavaScript | TypeScript | Go | Java | Swift | Kotlin | Ruby | Lua | Scala3 | PHP | D）</summary>
 
 - C++: [View full code](../../sample/cpp/16_glass_sculpture_chaos.cpp)
 - Rust: [View full code](../../sample/rs/16_glass_sculpture_chaos.rs)
@@ -154,6 +156,7 @@ Pythonで書かれた[サンプルコード](../../sample/readme-ja.md)の実行
 - Lua: [View full code](../../sample/lua/16_glass_sculpture_chaos.lua)
 - Scala3: [View full code](../../sample/scala/16_glass_sculpture_chaos.scala)
 - PHP: [View full code](../../sample/php/16_glass_sculpture_chaos.php)
+- D: [View full code](../../sample/d/16_glass_sculpture_chaos.d)
 
 </details>
 

@@ -11,7 +11,7 @@ This document summarizes transpiler implementation policy, structure, and conver
 ## 1. Repository Layout
 
 - `src/`
-  - `py2cs.py`, `py2cpp.py`, `py2rs.py`, `py2js.py`, `py2ts.py`, `py2go.py`, `py2java.py`, `py2swift.py`, `py2kotlin.py`, `py2rb.py`, `py2lua.py`, `py2php.py`, `py2scala.py`, `py2nim.py`
+  - `py2cs.py`, `py2cpp.py`, `py2rs.py`, `py2js.py`, `py2ts.py`, `py2go.py`, `py2java.py`, `py2swift.py`, `py2kotlin.py`, `py2rb.py`, `py2lua.py`, `py2php.py`, `py2scala.py`, `py2nim.py`, `py2d.py`
   - Place only transpiler entry scripts (`py2*.py`) directly under `src/`.
   - `common/`: shared base implementations and utilities used across multiple languages
   - The standard backend stage layout is `src/backends/<lang>/{lower,optimizer,emitter}/` (source of truth: `spec-folder.md`).
